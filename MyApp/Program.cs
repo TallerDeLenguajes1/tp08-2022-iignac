@@ -16,28 +16,28 @@ List<string> listaArchivos = Directory.GetFiles(path).ToList();
 
 // muestro las carpetas y archivos
 Console.WriteLine("----- Carpetas -----");
-foreach (string item in listaCarpetas)
+foreach (string carpetaX in listaCarpetas)
 {
-    Console.WriteLine(item);
+    DirectoryInfo carpetaXinfo = new DirectoryInfo(carpetaX);
+    Console.WriteLine(carpetaXinfo.Name);
 }
 Console.WriteLine("\n----- Archivos -----");
-foreach (string item in listaArchivos)
+foreach (string archivoX in listaArchivos)
 {
-    Console.WriteLine(item);
+    Console.WriteLine(Path.GetFileNameWithoutExtension(archivoX));
 }
 
 
 // guardo el listado de archivos en index.csv
 FileStream fs = new FileStream(archivoCSV, FileMode.Open);
 StreamWriter sw = new StreamWriter(fs);
-
 int i = 0;
 sw.WriteLine("NRO;NOMBRE;EXTENSION");
 foreach (string archivoX in listaArchivos)
 {
     i++;
-    FileInfo archivoXinfo = new FileInfo(archivoX);
-    sw.WriteLine(i.ToString() + ";" + archivoXinfo.Name + ";" + archivoXinfo.Extension);
+    FileInfo archivoXinfo = new FileInfo(archivoX); // creo un objeto FileInfo para obterner la extensión del archivo
+    sw.WriteLine(i.ToString() + ";" + Path.GetFileNameWithoutExtension(archivoX) + ";" + archivoXinfo.Extension);
 }
 sw.Close();
 fs.Close();
