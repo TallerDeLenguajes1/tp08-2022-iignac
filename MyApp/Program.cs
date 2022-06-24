@@ -2,7 +2,7 @@
 // string path = Console.ReadLine();
 
 string path = Directory.GetCurrentDirectory(); // ruta: C:\Taller1\TP08\tp08-2022-iignac\MyApp
-string archivoCSV = path + @"\index.csv";       // ruta: C:\Taller1\TP08\tp08-2022-iignac\MyApp\index.csv
+string archivoCSV = path + @"\index.csv";      // ruta: C:\Taller1\TP08\tp08-2022-iignac\MyApp\index.csv
  
 // creo el archivo index.csv en caso de que no exista
 if (!File.Exists(archivoCSV))
@@ -10,7 +10,7 @@ if (!File.Exists(archivoCSV))
     File.Create(archivoCSV);
 }
 
-// listo las subcarpetas y archivos que estan dentro del directorio path
+// listo las carpetas y archivos que estan dentro del directorio path
 List<string> listaCarpetas = Directory.GetDirectories(path).ToList(); 
 List<string> listaArchivos = Directory.GetFiles(path).ToList();
 
